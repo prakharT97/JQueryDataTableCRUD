@@ -1,0 +1,75 @@
+﻿@model IEnumerable<UserRegistrationMVCcore.Models.UserClass>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/lib/datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<div class="container">
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <br />
+    <div style="width:90%; margin:0 auto;">
+        <table class="table table-bordered table-hover table-striped" id="MyTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pwd)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Confirmpwd)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Uemail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Username)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pwd)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Confirmpwd)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Uemail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts
+{
+        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+        <script src="~/js/DataTable.js"></script>
+}
